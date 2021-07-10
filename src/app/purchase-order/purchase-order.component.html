@@ -1,0 +1,45 @@
+
+<div class="container">
+    <h1>Purchase order</h1>    
+    <form #companyForm="ngForm">
+      <div class="form-group">
+        <label for="pname">Purchase order number</label>
+        <input type="text" class="form-control" id="pname"
+               required
+               [(ngModel)]="model.name" name="name">
+      </div>
+
+      <div class="form-group">
+        <label for="pProduct">Product name</label>
+        <input type="text"  class="form-control" id="pProduct"
+               [(ngModel)]="pmodel.pname" name="pProduct" >
+      </div>
+      <div class="form-group">
+        <label for="pcompany">Company</label>
+        <select class="form-control"  id="pcompany"
+                required
+                [(ngModel)]="pmodel.pcompany" name="company">
+          <option *ngFor="let pcompany of companyNames" [value]="pcompany">{{pcompany}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="prate">Rate</label>
+        <input type="text"  class="form-control" id="prate"
+               [(ngModel)]="pmodel.prate" name="prate">
+
+      </div>
+      <div class="form-group">
+        <label for="pquantity">Quantity</label>
+        <input type="text"  class="form-control" id="pquantity"
+               [(ngModel)]="pmodel.pquantity" name="pquantity">
+      </div>
+      <div class="form-group">
+        <p>Total income-{{pmodel.prate*pmodel.pquantity}}</p>
+      </div>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+      <div>
+      <a routerLink="/product" class="btn btn-link">back</a>
+    </div>
+    </form>
+</div>

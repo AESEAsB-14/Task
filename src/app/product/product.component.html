@@ -1,0 +1,42 @@
+<!-- product form -->
+    <div class="container">
+        <div [hidden]="submitted">
+        <h1>Product Form</h1>
+        <form (ngSubmit)="onSubmit()" #companyForm="ngForm">
+            <!-- <form> -->
+            <div class="form-group">
+                <label for="pname">Name</label>
+                <input type="text" class="form-control" id="pname" required>
+            </div>
+            <div class="form-group">
+                <label for="pcompany">Company</label>
+                <select class="form-control" id="pcompany" required>
+                    <option *ngFor="let pcompany of companyNames" [value]="pcompany">{{pcompany}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="gst">Cost</label>
+                <input type="text" class="form-control" id="gst">
+            </div>
+            <button type="submit" class="btn btn-default" (click)="purchase()">Submit</button>
+
+            <!-- <button type="submit" class="btn btn-success">Submit</button> -->
+      <a routerLink="/purchase" class="btn btn-link">Purchase order page</a>
+  <div>
+    <a routerLink="/product" class="btn btn-link">back</a>
+  </div>
+        </form>
+    </div>
+    <div [hidden]="!submitted">
+        <h2>after add product the values are </h2>
+        <div class="row">
+          <div class="col-xs-3">Name</div>
+          <div class="col-xs-9">{{ pmodel.pname }}</div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-xs-3">GST</div>
+          <div class="col-xs-9">{{ pmodel.pGST }}</div>
+        </div> -->
+        <br>
+        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+      </div>
